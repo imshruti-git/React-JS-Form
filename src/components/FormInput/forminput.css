@@ -1,0 +1,13 @@
+.form-input{
+    display: flex;
+    flex-direction: column;
+}
+input{
+    padding: 1rem;
+    margin: 0.5rem;
+    width: 30vw;
+}
+label{
+    font-size: 15px;
+    font-weight: 100;
+}
