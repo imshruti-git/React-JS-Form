@@ -11,13 +11,14 @@ const FormInput = (props) => {
        
             <label >{label}</label>
             {id===8 ? 
-            <select className='dropdown'>
-              <option value='province1'>Province 1</option>
-              <option value='province2'>Province 2</option>
-              <option value='province3'>Province 3</option>
-              <option value='province4'>Province 4</option>
-              <option value='province5'>Province 5</option>
-              <option value='province6'>Province 6</option>
+            <select {...inputProps} onChange={onChange}>
+              <option disabled value=''>select your province</option>
+              <option value='province 1'>Province 1</option>
+              <option value='province 2'>Province 2</option>
+              <option value='province 3'>Province 3</option>
+              <option value='province 4'>Province 4</option>
+              <option value='province 5'>Province 5</option>
+              <option value='province 6'>Province 6</option>
             </select> :
              <input {...inputProps} onChange={onChange}></input> }
            

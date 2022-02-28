@@ -1,9 +1,15 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './App.css';
 import FormInput from './components/FormInput/FormInput';
+import Table from './components/Table';
 
 function App() {
 
+  //main array of object states
+  const [data, setData] = useState([]);
+
+
+  //input field states
   const [values, setValues] = useState({
     username:'',
     email:'',
@@ -12,7 +18,7 @@ function App() {
     city:'',
     district:'',
     country:'Nepal',
-    province:''
+    province :''
   });
 
   const inputs = [
@@ -36,7 +42,7 @@ function App() {
     },
     {
       id:3,
-      name:'phonenumber',
+      name:'number',
       label:'Phone Number',
       placeholder:'int:1234',
       type:'text',
@@ -79,21 +85,46 @@ function App() {
       name:'province',
       label:'province',
       placeholder:'province',
+      type: 'text',
       required: true,
     }
   ]
   
+//form submit event
 
   const submitHandler = (e) =>{
     e.preventDefault();
+    
+
+    setData([...data, values]);
+
+    setValues({
+      username:'',
+      email:'',
+      number:'',
+      DOB:'',
+      city:'',
+      district:'',
+      country:'Nepal',
+      province :''
+    });
+
+    
   };
+
+  
 
   const onChange= (e) =>{
     setValues({...values, [e.target.name]:e.target.value });
   };
 
-  console.log(values);
   
+  
+  //saving data to local storage
+  useEffect(()=>{
+    localStorage.setItem('data', JSON.stringify(data));
+  },[data])
+
   return (
     <div className="App">
       <h2>React form</h2>
@@ -117,7 +148,7 @@ function App() {
             </div>
           
       
-        
+        <Table length={data.length}/>
     </div>
   );
 }
