@@ -1,22 +1,26 @@
 .form-input{
     display: flex;
     flex-direction: column;
+
 }
 input, select, option{
     padding: 1rem;
-    margin: 0.5rem;
+    margin: 0.3rem;
     width: 30vw;
-    
+    background: transparent;
+    border-radius: 10px;
+
 
 }
 label{
     font-size: 15px;
-    font-weight: 100;
-    color: beige;
+    font-weight: bold;
+    color: rgb(10, 2, 2);
+    padding-left: 5px;
 }
 
 span{
-    color: red;
+    color: rgb(158, 17, 17);
     font-size: 15px;
     display: none;
 }

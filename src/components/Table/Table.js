@@ -1,29 +1,29 @@
 
 import React from 'react'
 import './table.css';
+import DeleteIcon from '@material-ui/icons/Delete';
+import EditIcon from '@material-ui/icons/Edit';
 
-
-const Table = ({ datas, length }) => {
-    console.log(datas);
+const Table = ({ datas, length, deleteEntry }) => {
   return (
-    <div>
-       
+    <div className='container'>
+       <h1>Information details</h1>
     {length > 0 && 
     
   <>
       <table>
           <thead>
           <tr>
-              
               <th>name</th>
               <th>email</th>
               <th>number</th>
-              <th>date of birth</th>
+              <th>dob</th>
               <th>city</th>
               <th>country</th>
               <th>district</th>
               <th>province</th>
-              <th>country</th>
+              <th></th>
+              <th></th>
               
           </tr>
           </thead>
@@ -38,7 +38,8 @@ const Table = ({ datas, length }) => {
                   <td>{d.country}</td>
                   <td>{d.district}</td>
                   <td>{d.province}</td>
-                  <td>{d.country}</td>
+                  <td className='icon' onClick={() => deleteEntry(d.number)}><DeleteIcon /></td>
+                  <td className='icon'><EditIcon /></td>
               </tr>
 
               ))}
@@ -48,7 +49,7 @@ const Table = ({ datas, length }) => {
          </table>
          </>
          }
-  {length < 1 && <div>no entries</div>}
+  {length < 1 && <h3>no entries</h3>}
 
           
  

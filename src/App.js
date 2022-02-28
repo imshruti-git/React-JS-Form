@@ -3,6 +3,8 @@ import './App.css';
 import FormInput from './components/FormInput/FormInput';
 import Table from './components/Table/Table';
 
+
+
 //getting the values of local storage
 const getDatafromLS=()=>{
   const data = localStorage.getItem('datas');
@@ -36,7 +38,7 @@ function App() {
     {
       id:1,
       name:'username',
-      label:'User name',
+      label:'User name:',
       placeholder:'username',
       errorMessage:'name an be 20 characters long and should not contain any special characters.',
       type:'text',
@@ -45,7 +47,7 @@ function App() {
     {
       id:2,
       name:'email',
-      label:'Email',
+      label:'Email:',
       placeholder:'email',
       type:'email',
       errorMessage:'It should be a valid email.',
@@ -54,7 +56,7 @@ function App() {
     {
       id:3,
       name:'number',
-      label:'Phone Number',
+      label:'Phone Number:',
       placeholder:'int:1234',
       type:'text',
       errorMessage:'7 characters long integer',
@@ -63,7 +65,7 @@ function App() {
     {
       id:4,
       name:'DOB',
-      label:'DOB',
+      label:'DOB:',
       placeholder:'DOB',
       type:'date',
       required: true,
@@ -71,7 +73,7 @@ function App() {
     {
       id:5,
       name:'city',
-      label:'city',
+      label:'City:',
       placeholder:'city',
       type:'text',
       required: true,
@@ -79,7 +81,7 @@ function App() {
     {
       id:6,
       name:'district',
-      label:'district',
+      label:'District:',
       placeholder:'district',
       type:'text',
       required: true,
@@ -87,14 +89,14 @@ function App() {
     {
       id:7,
       name:'country',
-      label:'country',
+      label:'Country:',
       type:'text',
       required: true,
     },
     {
       id:8,
       name:'province',
-      label:'province',
+      label:'Province:',
       placeholder:'province',
       type: 'text',
       required: true,
@@ -129,8 +131,13 @@ function App() {
     setValues({...values, [e.target.name]:e.target.value });
   };
 
-  console.log(values);
-  console.log(inputs);
+  //deleting entry
+  const deleteEntry=(number)=>{
+    const filteredvalue=datas.filter((element, index)=>{
+      return element.number !== number
+    })
+    setDatas(filteredvalue);
+  }
   
   //saving data to local storage
   useEffect(()=>{
@@ -138,30 +145,30 @@ function App() {
   },[datas])
 
   return (
-    <div className="App">
-      <h2>React form</h2>
-        <div className='wrapper'>
-        <form onSubmit={submitHandler}> 
-        <div className='box'>
-            {inputs.map((input) =>(
-              
-              <FormInput 
-                key={input.id} 
-                {...input} 
-                value={values[input.name]} 
-                onChange={onChange}
-              />
-          ))}
-        </div>
-            
-              
-              <button>submit</button>
-            </form>
-            </div>
+        <div className="App">
+              <h2>React form</h2>
+                  <div className='wrapper'>
+                    <form onSubmit={submitHandler}> 
+                       <div className='box'>
+                            {inputs.map((input) =>(  
+                              <FormInput 
+                                  key={input.id} 
+                                  {...input} 
+                                 value={values[input.name]} 
+                                  onChange={onChange}
+                             />
+                            ))}
+                        </div>           
+                      <button>submit</button>
+                    </form>
+                 </div>
           
       
-        <Table datas={datas} length={datas.length} />
+        <Table datas={datas} length={datas.length} deleteEntry={deleteEntry}/>
+         
+      
     </div>
+    
   );
 }
 

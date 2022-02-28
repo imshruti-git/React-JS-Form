@@ -2,23 +2,35 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  
 }
 .App {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  
   align-items: center;
-  height: 100vh;
-  
+  justify-content: center;
+  height: 100%;
+  background: linear-gradient(
+    rgba(116, 176, 204, 0.7),
+    rgba(99, 23, 170, 0.3)
+  );
+}
+::-webkit-scrollbar{
+  width: 0;
 }
 
-h2{
-  color: aqua;
+.App h2{
+  color: rgb(39, 2, 7);
+  padding: 2rem;
+  text-transform: uppercase;
 }
+
+
 .wrapper{
-  border: 4px solid;
-  background-color: black;
+  border: 4px;
+  width: 1000px;
+  background: transparent;
+  margin-bottom: 5rem;
 }
 
 .box{
@@ -26,4 +38,25 @@ h2{
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 1.2rem;
   padding: 1rem;
+}
+
+button{
+  width: 20%;
+  margin-left: 5rem;
+  height: 50px;
+  padding: 10px;
+  border: none;
+  background-color: rgb(168, 185, 185);
+  font-size: large;
+  font-weight: bold;
+  border-radius: 10px;
+  text-transform: uppercase;
+  cursor: pointer;
+  margin-top: 15px;
+}
+
+button:hover{
+  background-color: rgb(167, 155, 179);
+  color: white;
+
 }

@@ -1,17 +1,46 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 table{
     border-collapse: collapse;
-    margin: 1rem 0;
+    border-radius: 10px;
+    margin:3rem 0 10rem 0;
     font-size: 15px;
-    width: 90vw;
+    width: 80vw;
 }
 
 thead tr{
-  background-color: rgb(70, 129, 110);
-  color: black;
+  background-color: rgb(114, 67, 201);
+  color: rgb(252, 248, 248);
   text-align: center;
   font-weight: bold;
 }
 
-thead tr th{
+th{
     padding: 10px;
+    text-transform: uppercase;
+}
+
+tbody tr{
+    text-align: center;
+}
+td{
+    padding: 10px;
+    font-size: 15px;
+}
+.icon{
+    color: rgb(121, 27, 27);
+    cursor: pointer;
+}
+
+.icon:hover{
+    color: white;
+}
+
+.container h3{
+    line-height: 2rem;
+    margin: 5rem;
 }
