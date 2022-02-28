@@ -1,12 +1,23 @@
 import { useState, useEffect } from 'react';
 import './App.css';
 import FormInput from './components/FormInput/FormInput';
-import Table from './components/Table';
+import Table from './components/Table/Table';
+
+//getting the values of local storage
+const getDatafromLS=()=>{
+  const data = localStorage.getItem('datas');
+  if(data){
+    return JSON.parse(data);
+  }
+  else{
+    return []
+  }
+};
 
 function App() {
 
   //main array of object states
-  const [data, setData] = useState([]);
+  const [datas, setDatas] = useState(getDatafromLS());
 
 
   //input field states
@@ -96,7 +107,7 @@ function App() {
     e.preventDefault();
     
 
-    setData([...data, values]);
+    setDatas([...datas, values]);
 
     setValues({
       username:'',
@@ -118,12 +129,13 @@ function App() {
     setValues({...values, [e.target.name]:e.target.value });
   };
 
-  
+  console.log(values);
+  console.log(inputs);
   
   //saving data to local storage
   useEffect(()=>{
-    localStorage.setItem('data', JSON.stringify(data));
-  },[data])
+    localStorage.setItem('datas', JSON.stringify(datas));
+  },[datas])
 
   return (
     <div className="App">
@@ -148,7 +160,7 @@ function App() {
             </div>
           
       
-        <Table length={data.length}/>
+        <Table datas={datas} length={datas.length} />
     </div>
   );
 }

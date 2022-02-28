@@ -1,0 +1,17 @@
+table{
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 15px;
+    width: 90vw;
+}
+
+thead tr{
+  background-color: rgb(70, 129, 110);
+  color: black;
+  text-align: center;
+  font-weight: bold;
+}
+
+thead tr th{
+    padding: 10px;
+}
