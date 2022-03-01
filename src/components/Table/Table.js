@@ -11,7 +11,7 @@ const Table = ({ datas, setDatas, length, deleteEntry }) => {
 
     const navigate = useNavigate();
     const clickHandler = (e) =>{
-        navigate("/profile", {state: {datas, setDatas}});
+        navigate("/profile", {state: {datas}});
     };
     
     const[order, setOrder] = useState("ASC");
