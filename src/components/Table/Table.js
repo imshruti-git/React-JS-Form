@@ -4,9 +4,10 @@ import './table.css';
 import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
 import { Link } from 'react-router-dom';
+import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 
 
-const Table = ({ datas, setDatas, length, deleteEntry, editEntry }) => {
+const Table = ({ datas, setDatas, length, deleteEntry }) => {
 
     const[order, setOrder] = useState("ASC");
 
@@ -36,7 +37,7 @@ console.log(datas.name);
       <table>
           <thead>
           <tr>
-              <th onClick={()=>sorting('username')}>name</th>
+              <th><ArrowDropDownIcon onClick={()=>sorting('username')}/> name</th>
               <th>email</th>
               <th>number</th>
               <th>dob</th>
@@ -50,18 +51,18 @@ console.log(datas.name);
           </tr>
           </thead>
           <tbody>
-              {datas.map((d )=>(
-                  <tr key={d.id}>
-                  <td>{d.name.username}</td>
-                  <td>{d.name.email}</td>
-                  <td>{d.name.number}</td>
-                  <td>{d.name.DOB}</td>
-                  <td>{d.name.city}</td>
-                  <td>{d.name.country}</td>
-                  <td>{d.name.district}</td>
-                  <td>{d.name.province}</td>
-                  <td className='icon' onClick={() => deleteEntry(d.id)}><DeleteIcon /></td>
-                  <td className='icon' onClick={()=> editEntry(d.id)}><EditIcon /></td>
+              {datas.map((d, index )=>(
+                  <tr key={index}>
+                  <td>{d.username}</td>
+                  <td>{d.email}</td>
+                  <td>{d.number}</td>
+                  <td>{d.DOB}</td>
+                  <td>{d.city}</td>
+                  <td>{d.country}</td>
+                  <td>{d.district}</td>
+                  <td>{d.province}</td>
+                  <td className='icon' onClick={() => deleteEntry(d.number)}><DeleteIcon /></td>
+                  <td className='icon' ><EditIcon /></td>
               </tr>
 
               ))}
@@ -77,6 +78,7 @@ console.log(datas.name);
           
  
 </div>
+
 
     
   )

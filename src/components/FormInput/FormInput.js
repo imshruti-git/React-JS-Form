@@ -1,11 +1,18 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './forminput.css';
 
 
 const FormInput = (props) => {
+
+  const [focused, setFocused ] =useState(false);
+
   const { label, errorMessage, onChange, id, ...inputProps } = props;
  
-  
+  const handleFocus = (e) => {
+    setFocused(true);
+  };
+
+
   return (
     <div className='form-input'>
        
@@ -20,7 +27,7 @@ const FormInput = (props) => {
               <option value='province 5'>Province 5</option>
               <option value='province 6'>Province 6</option>
             </select> :
-             <input {...inputProps} onChange={onChange}></input> }
+             <input {...inputProps} onChange={onChange} onBlur={handleFocus} focused={focused.toString()}></input> }
            
             <span>{errorMessage}</span>
         

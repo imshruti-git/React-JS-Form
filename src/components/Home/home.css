@@ -1,9 +1,14 @@
-.container h2{
+.container .main-title{
     color: rgb(39, 2, 7);
     padding: 2rem;
     text-transform: uppercase;
   }
   
+  @media (max-width: 900px) {
+    .container .main-title {
+      left: 0;
+    }
+  }
   
   .wrapper{
     border: 4px;
@@ -11,12 +16,25 @@
     background: transparent;
     margin-bottom: 5rem;
   }
+
+  @media (max-width: 900px) {
+    .wrapper {
+      width:90vw;
+  }
+}
+  
   
   .box{
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 1.2rem;
     padding: 1rem;
+  }
+  @media (max-width: 900px) {
+    .box {
+      display: flex;
+      flex-direction: column;
+    }
   }
   
   .button1{

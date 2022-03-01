@@ -4,7 +4,6 @@ import Table from '../Table/Table';
 import {inputs} from '../../data';
 import './home.css';
 
-
 //getting the values of local storage
 const getDatafromLS=()=>{
     const data = localStorage.getItem('datas');
@@ -16,12 +15,10 @@ const getDatafromLS=()=>{
     }
   };
 
-
 const Home = () => {
 
     //main array of object states
   const [datas, setDatas] = useState(getDatafromLS());
-
 
   //input field states
   const [values, setValues] = useState({
@@ -35,7 +32,6 @@ const Home = () => {
     province :''
   });
 
-
   //for sorting
   
   
@@ -44,8 +40,8 @@ const Home = () => {
   const submitHandler = (e) =>{
     e.preventDefault();
     
-    const allInputdata = { id: new Date().getTime().toString(), name:values }
-    setDatas([...datas, allInputdata]);
+    //const allInputdata = { id: new Date().getTime().toString(), name:values }
+    setDatas([...datas, values ]);
 
     setValues({  
       username:'',
@@ -68,26 +64,17 @@ const Home = () => {
   };
 
   //deleting entry
-  const deleteEntry=(id)=>{
+  const deleteEntry=(number)=>{
     const filteredvalue=datas.filter((element, index)=>{
-      return element.id !== id
+      return element.number !== number
     })
+    //console.log(number);
     setDatas(filteredvalue);
   }
   
 
   //Editing Entry
-  const editEntry=(id)=>{
-      const findValue= datas.find((element)=>{
-          if(element.id===id) {
-              return{
-                  ...values,
-              }
-          }
-      });
-      console.log(findValue);
-      
-  }
+  
   //saving data to local storage
   useEffect(()=>{
     localStorage.setItem('datas', JSON.stringify(datas));
@@ -95,7 +82,7 @@ const Home = () => {
 
   return (
     <div className='container'>
-        <h2>React form</h2>
+        <h2 className='main-title'>React form</h2>
                   <div className='wrapper'>
                     <form onSubmit={submitHandler}> 
                        <div className='box'>
@@ -113,7 +100,7 @@ const Home = () => {
                  </div>
           
       
-        <Table datas={datas} setDatas={setDatas} length={datas.length} deleteEntry={deleteEntry} editEntry={editEntry}/>
+                 <Table datas={datas} setDatas={setDatas} length={datas.length} deleteEntry={deleteEntry} />
     </div>
   )
 }
