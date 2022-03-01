@@ -3,12 +3,17 @@ import React, { useState } from 'react'
 import './table.css';
 import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 
 
 const Table = ({ datas, setDatas, length, deleteEntry }) => {
 
+    const navigate = useNavigate();
+    const clickHandler = (e) =>{
+        navigate("/profile", {state: {datas, setDatas}});
+    };
+    
     const[order, setOrder] = useState("ASC");
 
     const sorting =(col)=>{
@@ -70,7 +75,7 @@ console.log(datas.name);
               </tbody>
          
          </table>
-         <Link to={{pathname: `/profile`, state: {datas}}}><button className='button2'>View Profiles</button></Link>
+         <button onClick={clickHandler} className='button2'>View Profiles</button>
          </>
          }
   {length < 1 && <h3>no entries</h3>}
